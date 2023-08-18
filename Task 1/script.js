@@ -12,14 +12,26 @@ Pastaba: atvaizdavimas turi būti matomas pateikus formą ir pateikiamas
 const outputDiv = document.getElementById("output");
 const inputKilos = document.getElementById("search");
 
-document.querySelector("form").addEventListener("submit", () => {
+document.querySelector("form").addEventListener("submit", (event) => {
+	event.preventDefault();
+
+	outputDiv.innerHTML = "";
+
 	const kilograms = inputKilos.value;
 
-	const pounds = document.createElement("p");
-	const grams = document.createElement("p");
-	const ounces = document.createElement("p");
+	if (Number(kilograms)) {
+		const pounds = document.createElement("p");
+		const grams = document.createElement("p");
+		const ounces = document.createElement("p");
 
-	pounds.textContent = "Pounds: " + kilograms * 2.2046 + "lb";
-	grams.textContent = "Grams: " + kilograms * 1000 + "g";
-	ounces.textContent = "Ounces: " + kilograms * 35.274 + "oz";
+		pounds.textContent = "Pounds: " + (kilograms * 2.2046).toFixed(4) + "lb";
+		grams.textContent = "Grams: " + kilograms * 1000 + "g";
+		ounces.textContent = "Ounces: " + (kilograms * 35.274).toFixed(4) + "oz";
+
+		outputDiv.append(pounds, grams, ounces);
+	} else {
+		const errorMessage = document.createElement("p");
+		errorMessage.textContent = "Please enter a number";
+		outputDiv.append(errorMessage);
+	}
 });

@@ -8,3 +8,18 @@ pamatyti jo pateikto svorio kovertavimą į:
 Pastaba: atvaizdavimas turi būti matomas pateikus formą ir pateikiamas
 <div id="output"></div> viduje, bei turi turėti bent minimalų stilių;
 ------------------------------------------------------------------- */
+
+const outputDiv = document.getElementById("output");
+const inputKilos = document.getElementById("search");
+
+document.querySelector("form").addEventListener("submit", () => {
+	const kilograms = inputKilos.value;
+
+	const pounds = document.createElement("p");
+	const grams = document.createElement("p");
+	const ounces = document.createElement("p");
+
+	pounds.textContent = "Pounds: " + kilograms * 2.2046 + "lb";
+	grams.textContent = "Grams: " + kilograms * 1000 + "g";
+	ounces.textContent = "Ounces: " + kilograms * 35.274 + "oz";
+});

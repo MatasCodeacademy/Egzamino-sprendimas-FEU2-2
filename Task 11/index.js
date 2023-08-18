@@ -1,7 +1,7 @@
 const BASE_URL = "https://melon-potent-period.glitch.me";
 
 document.getElementById("btn-add-skill").addEventListener("click", () => {
-	location.href = "./add.html";
+	location.href = "./pages/add.html";
 });
 
 fetch(BASE_URL + "/skills")
@@ -21,26 +21,33 @@ const populateSkillsTable = (skillData) => {
 	const table = document.getElementById("table-skills");
 	const tbody = table.querySelector("tbody");
 
-	skillData.forEach((skill) => {
-		const skillRow = document.createElement("tr");
+	if (skillData.length !== 0) {
+		skillData.forEach((skill) => {
+			const skillRow = document.createElement("tr");
 
-		const idTableData = document.createElement("td");
-		idTableData.textContent = skill.id;
+			const idTableData = document.createElement("td");
+			idTableData.textContent = skill.id;
 
-		const skillTableData = document.createElement("td");
-		skillTableData.textContent = skill.skill;
+			const skillTableData = document.createElement("td");
+			skillTableData.textContent = skill.skill;
 
-		const deleteButton = document.createElement("td");
+			const deleteButton = document.createElement("td");
 
-		deleteButton.addEventListener("click", () => {
-			deleteSkill(skill.id);
+			deleteButton.addEventListener("click", () => {
+				deleteSkill(skill.id);
+			});
+
+			deleteButton.textContent = "delete";
+
+			skillRow.append(idTableData, skillTableData, deleteButton);
+			tbody.append(skillRow);
 		});
-
-		deleteButton.textContent = "delete";
-
-		skillRow.append(idTableData, skillTableData, deleteButton);
-		tbody.append(skillRow);
-	});
+	} else {
+		table.remove();
+		const message = document.createElement("h2");
+		message.textContent = "There are no skills to show";
+		document.querySelector("body").append(message);
+	}
 };
 
 const deleteSkill = async (skillId) => {

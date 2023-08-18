@@ -1,0 +1,67 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: rgb(47, 56, 79);
+	color: white;
+	padding: 50px 50px;
+}
+
+button,
+#btn-add-skill,
+#skill-input {
+	background-color: rgb(27, 29, 34);
+	color: white;
+
+	border-radius: 5px;
+	border: 0;
+}
+
+button,
+#btn-add-skill {
+	padding: 10px 20px;
+}
+
+#skill-input {
+	padding: 5px 10px;
+}
+
+h1 {
+	margin-top: 50px;
+	margin-bottom: 20px;
+}
+
+table {
+	width: 100%;
+	max-width: 600px;
+	border-collapse: collapse;
+	text-align: start;
+}
+
+table th,
+table td {
+	padding: 5px 5px;
+}
+
+table > thead {
+	border-bottom: 1px white solid;
+}
+
+table > thead > tr > th {
+	text-align: start;
+}
+
+table > tbody > tr > td:last-child {
+	color: rgb(71, 154, 255);
+	cursor: pointer;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	gap: 10px;
+}

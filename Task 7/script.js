@@ -12,5 +12,12 @@ const audi = {
 };
 
 const showObjectKeys = (object) => {
+	// let returnArray = [];
+
+	// for (key in object) {
+	// 	returnArray.push(key);
+	// }
+
+	// return returnArray;
 	return Object.keys(object);
 };
